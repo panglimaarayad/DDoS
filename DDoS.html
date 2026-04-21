@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDOS V1 - PENTEST SUITE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
+        body { background: #000; color: #ffd700; font-family: 'Share Tech Mono', monospace; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { width: 100%; max-width: 450px; border: 1px solid #ffd700; padding: 25px; background: #050505; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        h2 { font-family: 'Orbitron'; text-align: center; margin-bottom: 20px; letter-spacing: 2px; }
+        input, select { width: 100%; background: #000; border: none; border-bottom: 1px solid #333; color: #fff; padding: 12px; margin: 10px 0; outline: none; font-family: inherit; }
+        input:focus { border-bottom: 1px solid #ffd700; }
+        button { width: 100%; padding: 15px; background: transparent; color: #ffd700; border: 1px solid #ffd700; cursor: pointer; font-family: 'Orbitron'; font-weight: bold; transition: 0.3s; margin-top: 15px; }
+        button:hover { background: #ffd700; color: #000; }
+        #log { height: 150px; background: #000; border: 1px solid #111; padding: 10px; margin-top: 15px; font-size: 11px; color: #b8860b; overflow-y: auto; border-left: 3px solid #ffd700; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>DDOS V1</h2>
+        <input type="text" id="target" placeholder="TARGET IP ATAU URL (e.g. 1.1.1.1)">
+        <input type="number" id="port" placeholder="PORT (e.g. 80 / 443)">
+        <select id="method">
+            <option value="TCP">TCP FLOOD (Layer 4)</option>
+            <option value="UDP">UDP FLOOD (Layer 4)</option>
+            <option value="HTTP">HTTP GET (Layer 7)</option>
+        </select>
+        <input type="number" id="threads" placeholder="THREADS (JUMLAH SERANGAN)">
+        <button onclick="startAttack()">INITIATE ATTACK</button>
+        <div id="log">> STANDBY...</div>
+    </div>
+
+    <script>
+        function log(m) {
+            const l = document.getElementById('log');
+            l.innerHTML = `<div>> ${m}</div>` + l.innerHTML;
+        }
+
+        function startAttack() {
+            const target = document.getElementById('target').value;
+            const method = document.getElementById('method').value;
+            if(!target) return alert("TARGET NULL!");
+            log(`STRIKE INITIATED ON ${target} VIA ${method}...`);
+            // Integrasi ke API Python backend lo di sini
+        }
+    </script>
+</body>
+</html>
